@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 ratings_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/ratings.csv")
 books_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/books.csv")
@@ -22,7 +22,7 @@ st.markdown(html_temp,unsafe_allow_html=True)
 
 # st.dataframe(ratings_df)
 
-user_input =st.text_area("Copy your email here","")
+user_input =st.text_area("Copy your email here","1,9999")
 st.write("***testing;***\n\n" , user_input)
 
 b_id =list(ratings_df.book_id.unique())
