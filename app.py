@@ -19,7 +19,7 @@ html_temp = """
 	"""
 st.markdown(html_temp,unsafe_allow_html=True)
 
-st.dataframe(ratings_df)
+# st.dataframe(ratings_df)
 
 b_id =list(ratings_df.book_id.unique())
 b_id.remove(10000)
