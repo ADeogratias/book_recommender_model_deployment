@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from tensorflow import keras
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 # ratings_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/ratings.csv")
 # books_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/books.csv")
@@ -36,9 +35,9 @@ st.markdown(html_temp,unsafe_allow_html=True)
 # st.write(len(user))
 # st.write(len(b_id))
 # 
-#model_file = "model.h5"
-# model = load_model( 'model.h5' )
-#model = load_model(model)
+# model_file = "model.h5"
+model = load_model( 'model.h5', compile = False )
+# model = load_model(model)
 
 
 # if st.button("Predict"):
