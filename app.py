@@ -8,7 +8,6 @@ import pickle
 # books_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/books.csv")
 
 st.title("Books Recommender System")
-st.subheader("Determine if that email you received is spam or not")
 html_temp = """
 	<div style="background-color:black;padding:10px">
 	<h3 style="color:white;text-align:center;">Machine Learning</h3>
