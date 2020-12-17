@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+from tensorflow import keras
 # from keras.models import load_model
 
 # ratings_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/ratings.csv")
@@ -15,6 +16,7 @@ html_temp = """
 	<div>
 	<h3 style="color:black;text-align:center;">Done By </h3>
 	<p style="color:black;text-align:center;">Deogratias Amani</p>
+	<p style="color:black;text-align:center;">Keras is here</p>
 	
 	"""
 st.markdown(html_temp,unsafe_allow_html=True)
