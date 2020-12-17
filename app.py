@@ -2,12 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-from tensorflow.keras.models import load_model
+from tensorflow import keras
+from keras.models import load_model
 
 ratings_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/ratings.csv")
 books_df = pd.read_csv("D:/School Related Documents and Apps/4th Year/Machine Learning/books-host/book_recommender_model_deployment/dataset/books.csv")
 
-st.title("The Email Classification Predictor")
+st.title("Books Recommender System")
 st.subheader("Determine if that email you received is spam or not")
 html_temp = """
 	<div style="background-color:black;padding:10px">
@@ -22,32 +23,28 @@ st.markdown(html_temp,unsafe_allow_html=True)
 
 # st.dataframe(ratings_df)
 
-user_input =st.text_area("Copy your email here","1,9999")
-st.write("***testing;***\n\n" , user_input)
-
 b_id =list(ratings_df.book_id.unique())
 b_id.remove(10000)
 book_arr = np.array(b_id)
-user = np.array([53424 for i in range(len(b_id))])
 
-st.write(len(user))
-st.write(len(b_id))
+
+
+user_input =st.number_input("Enter user Id here for books recommendations",1, len(b_id),1)
+st.write("***Input***" , user_input)
+
+
+# st.write(len(user))
+# st.write(len(b_id))
 # 
 #model_file = "model.h5"
 model = load_model( 'model.h5' )
 #model = load_model(model)
 
-pred = model.predict([book_arr, user])
-pred
-
-pred = pred.reshape(-1)
-pred_ids = (-pred).argsort()[0:5]
-pred_ids
 
 if st.button("Predict"):
-	
-	st.write(books_df.iloc[pred_ids])
-    # if y_pred[0] == 0:
-    #     st.write("test1")
-    # elif y_pred[0] == 1:
-    #     st.write("test2")
+	user = np.array([user_input for i in range(len(b_id))])
+	pred = model.predict([book_arr, user])
+	pred = pred.reshape(-1)
+	pred_ids = (-pred).argsort()[0:5]
+
+	st.write(books_df.iloc[pred_ids].title)
